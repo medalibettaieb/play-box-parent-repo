@@ -8,9 +8,13 @@
 <body>
 	<h1>welcome</h1>
 	<h:form>
-		<h:outputText value="name" />
-		<h:inputText value="#{mrBean.name}" />
-		<h:commandButton action="#{mrBean.doSomething}" value="call foulen" />
+		<h:panelGrid columns="2">
+			<h:outputText value="login" />
+			<h:inputText value="#{mrBean.login}" />
+			<h:outputText value="password" />
+			<h:inputSecret value="#{mrBean.password}" />
+		</h:panelGrid>
+		<h:commandButton action="#{mrBean.doLogin}" value="login" />
 	</h:form>
 </body>
 </html>

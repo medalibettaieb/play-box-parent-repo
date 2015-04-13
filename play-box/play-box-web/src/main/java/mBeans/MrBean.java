@@ -6,18 +6,36 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class MrBean {
-	private String name;
+	private String login;
+	private String password;
 
-	public String doSomething() {
-		return "/home?faces-redirect=true";
+	public String doLogin() {
+		String navigateTo = "";
+		if (login.equalsIgnoreCase("admin")
+				&& password.equalsIgnoreCase("admin")) {
+			navigateTo = "/home?faces-redirect=true";
+		} else {
+			navigateTo = "/error?faces-redirect=true";
+		}
+
+		return navigateTo;
+
 	}
 
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

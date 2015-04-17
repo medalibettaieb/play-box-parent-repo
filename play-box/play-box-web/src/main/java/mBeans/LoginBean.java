@@ -21,13 +21,13 @@ public class LoginBean {
 				user.getPassword());
 		if (userFound != null) {
 			if (userFound instanceof Admin) {
-				System.out.println("admin");
+				navigateTo = "/pages/admin/adminHome?faces-redirect=true";
 			} else {
-				System.out.println("player");
+				navigateTo = "/pages/player/playerHome?faces-redirect=true";
 			}
 
 		} else {
-			System.out.println("user not found");
+			navigateTo = "/error?faces-redirect=true";
 		}
 		return navigateTo;
 	}

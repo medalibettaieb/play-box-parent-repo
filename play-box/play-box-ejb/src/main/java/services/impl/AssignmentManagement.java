@@ -90,6 +90,21 @@ public class AssignmentManagement implements AssignmentManagementRemote,
 		return b;
 	}
 
-	
+	@Override
+	public List<Room> findRooms() {
+		return entityManager.createQuery("select r from Room r", Room.class)
+				.getResultList();
+	}
+
+	@Override
+	public Boolean addRoom(Room room) {
+		Boolean b = false;
+		try {
+			entityManager.merge(room);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
 
 }

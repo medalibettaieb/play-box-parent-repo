@@ -1,0 +1,41 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">roomsMan</ui:define>
+	<ui:define name="pageContent">
+		<form id="form1">
+			<h1>list of Rooms</h1>
+			<h:dataTable border="1" value="#{administrationBean.rooms}" var="r">
+				<h:column id="column1">
+					<f:facet name="header">
+						<h:outputText value="name"></h:outputText>
+					</f:facet>
+					#{r.name}
+				</h:column>
+				<h:column id="column2">
+					<f:facet name="header">
+						<h:outputText value="type"></h:outputText>
+					</f:facet>
+					#{r.type}
+				</h:column>
+
+			</h:dataTable>
+			<h:commandButton action="#{administrationBean.show}" value="addRoom" />
+		</form>
+		<h:form id="form2">
+			<h:panelGrid columns="2" rendered="#{administrationBean.visibility}">
+				<h:outputText value="name" />
+				<h:inputText value="#{administrationBean.room.name}" />
+				<h:outputText value="type" />
+				<h:inputText value="#{administrationBean.room.type}" />
+			</h:panelGrid>
+			<h:commandButton action="#{administrationBean.doAddRoom}"
+				value="Save Or Update" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+

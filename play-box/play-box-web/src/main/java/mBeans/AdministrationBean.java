@@ -25,8 +25,9 @@ public class AdministrationBean {
 	}
 
 	public String show() {
-		visibility = true;
 		System.out.println(visibility);
+		visibility = true;
+		
 		return "";
 	}
 

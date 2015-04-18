@@ -25,4 +25,8 @@ public interface AssignmentManagementLocal {
 	Boolean deleteRoom(Room room);
 
 	Room findRoomByName(String name);
+
+	List<Game> findAllGames();
+
+	Game findGameByName(String name);
 }

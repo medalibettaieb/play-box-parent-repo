@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import services.interfaces.AssignmentManagementLocal;
+import domain.Game;
 import domain.Room;
 
 @ManagedBean
@@ -15,6 +16,8 @@ public class AdministrationBean {
 	private List<Room> rooms;
 	private Room roomSelected = new Room();
 	private boolean visibility = false;
+	private List<Game> games;
+	private List<Game> selectedGames;
 
 	@EJB
 	private AssignmentManagementLocal assignmentManagementLocal;
@@ -30,8 +33,11 @@ public class AdministrationBean {
 		return "";
 	}
 
-	public String doDisplayRoomSelected() {
-		System.out.println(roomSelected);
+	public String doAssignGamesToRoom() {
+		for (Game g : selectedGames) {
+			assignmentManagementLocal.assignGameToRoom(g.getId(),
+					roomSelected.getId());
+		}
 		return "";
 	}
 
@@ -43,6 +49,10 @@ public class AdministrationBean {
 
 	public Room doFindRoomByName(String name) {
 		return assignmentManagementLocal.findRoomByName(name);
+	}
+
+	public Game doFindGameByName(String name) {
+		return assignmentManagementLocal.findGameByName(name);
 	}
 
 	public String show() {
@@ -75,6 +85,23 @@ public class AdministrationBean {
 
 	public void setRoomSelected(Room roomSelected) {
 		this.roomSelected = roomSelected;
+	}
+
+	public List<Game> getGames() {
+		games = assignmentManagementLocal.findAllGames();
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+
+	public List<Game> getSelectedGames() {
+		return selectedGames;
+	}
+
+	public void setSelectedGames(List<Game> selectedGames) {
+		this.selectedGames = selectedGames;
 	}
 
 }

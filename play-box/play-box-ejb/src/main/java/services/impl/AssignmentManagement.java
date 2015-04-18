@@ -126,4 +126,19 @@ public class AssignmentManagement implements AssignmentManagementRemote,
 				.getSingleResult();
 	}
 
+	@Override
+	public List<Game> findAllGames() {
+		return entityManager.createQuery("select g from Game g", Game.class)
+				.getResultList();
+	}
+
+	@Override
+	public Game findGameByName(String name) {
+		return entityManager
+				.createQuery("select g from Game g where g.name=:param1",
+						Game.class).setParameter("param1", name)
+				.getSingleResult();
+
+	}
+
 }

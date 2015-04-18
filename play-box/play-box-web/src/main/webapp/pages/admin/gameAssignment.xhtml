@@ -8,15 +8,22 @@
 <body>
 	<h1>list of available rooms</h1>
 	<h:form>
-		<h:selectOneMenu value="#{administrationBean.roomSelected}" converter="rc">
+		<h:selectOneMenu value="#{administrationBean.roomSelected}"
+			converter="rc">
 			<f:selectItem itemLabel="please select a room" />
 			<f:selectItems value="#{administrationBean.rooms}" var="r"
 				itemLabel="#{r.name}" itemValue="#{r}"></f:selectItems>
 		</h:selectOneMenu>
-		<h:commandButton action="#{administrationBean.doDisplayRoomSelected}"
-			value="display room name" />
 
 
+
+		<h:selectManyCheckbox value="#{administrationBean.selectedGames}"
+			converter="gc">
+			<f:selectItems value="#{administrationBean.games}" var="g"
+				itemLabel="#{g.name}" itemValue="#{g}"></f:selectItems>
+		</h:selectManyCheckbox>
+		<h:commandButton action="#{administrationBean.doAssignGamesToRoom}"
+			value="assign" />
 	</h:form>
 </body>
 </html>

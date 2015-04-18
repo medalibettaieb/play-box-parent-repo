@@ -30,10 +30,19 @@ public class AdministrationBean {
 		return "";
 	}
 
+	public String doDisplayRoomSelected() {
+		System.out.println(roomSelected);
+		return "";
+	}
+
 	public String doDelete() {
 		assignmentManagementLocal.deleteRoom(roomSelected);
 		roomSelected = new Room();
 		return "";
+	}
+
+	public Room doFindRoomByName(String name) {
+		return assignmentManagementLocal.findRoomByName(name);
 	}
 
 	public String show() {

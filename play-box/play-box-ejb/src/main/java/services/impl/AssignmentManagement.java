@@ -118,4 +118,12 @@ public class AssignmentManagement implements AssignmentManagementRemote,
 		return b;
 	}
 
+	@Override
+	public Room findRoomByName(String name) {
+		return entityManager
+				.createQuery("select r from Room r where r.name=:param1",
+						Room.class).setParameter("param1", name)
+				.getSingleResult();
+	}
+
 }

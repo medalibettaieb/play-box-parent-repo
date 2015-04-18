@@ -23,4 +23,6 @@ public interface AssignmentManagementLocal {
 	Boolean addRoom(Room room);
 
 	Boolean deleteRoom(Room room);
+
+	Room findRoomByName(String name);
 }

@@ -107,4 +107,15 @@ public class AssignmentManagement implements AssignmentManagementRemote,
 		return b;
 	}
 
+	@Override
+	public Boolean deleteRoom(Room room) {
+		Boolean b = false;
+		try {
+			entityManager.remove(entityManager.merge(room));
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
+
 }

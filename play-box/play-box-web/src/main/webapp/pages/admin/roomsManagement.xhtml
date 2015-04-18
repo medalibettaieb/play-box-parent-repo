@@ -22,18 +22,40 @@
 					#{r.type}
 				</h:column>
 
+				<h:column id="column3">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{administrationBean.doSelect}"
+						value="select">
+						<f:setPropertyActionListener value="#{r}"
+							target="#{administrationBean.roomSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+				<h:column id="column4">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{administrationBean.doDelete}"
+						value="delete">
+						<f:setPropertyActionListener value="#{r}"
+							target="#{administrationBean.roomSelected}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+
 			</h:dataTable>
 			<h:commandButton action="#{administrationBean.show}" value="addRoom" />
 		</h:form>
 		<h:form id="form2" rendered="#{administrationBean.visibility}">
-			<h:panelGrid columns="2" >
+			<h:panelGrid columns="2">
 				<h:outputText value="name" />
-				<h:inputText value="#{administrationBean.room.name}" />
+				<h:inputText value="#{administrationBean.roomSelected.name}" />
 				<h:outputText value="type" />
-				<h:inputText value="#{administrationBean.room.type}" />
+				<h:inputText value="#{administrationBean.roomSelected.type}" />
 			</h:panelGrid>
 			<h:commandButton action="#{administrationBean.doAddRoom}"
 				value="Save Or Update" />
+				
 		</h:form>
 
 	</ui:define>

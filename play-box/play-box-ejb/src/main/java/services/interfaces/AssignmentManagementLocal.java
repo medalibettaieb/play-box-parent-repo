@@ -19,6 +19,8 @@ public interface AssignmentManagementLocal {
 	Boolean playGame(Subscription subscription, Game game);
 
 	List<Room> findRooms();
-	
+
 	Boolean addRoom(Room room);
+
+	Boolean deleteRoom(Room room);
 }

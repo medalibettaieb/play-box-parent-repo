@@ -13,21 +13,33 @@ import domain.Room;
 @SessionScoped
 public class AdministrationBean {
 	private List<Room> rooms;
-	private Room room = new Room();
+	private Room roomSelected = new Room();
 	private boolean visibility = false;
 
 	@EJB
 	private AssignmentManagementLocal assignmentManagementLocal;
 
 	public String doAddRoom() {
-		assignmentManagementLocal.addRoom(room);
+		assignmentManagementLocal.addRoom(roomSelected);
+		visibility = false;
+		return "";
+	}
+
+	public String doSelect() {
+		visibility = true;
+		return "";
+	}
+
+	public String doDelete() {
+		assignmentManagementLocal.deleteRoom(roomSelected);
+		roomSelected = new Room();
 		return "";
 	}
 
 	public String show() {
 		System.out.println(visibility);
 		visibility = true;
-		
+
 		return "";
 	}
 
@@ -40,20 +52,20 @@ public class AdministrationBean {
 		this.rooms = rooms;
 	}
 
-	public Room getRoom() {
-		return room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-
 	public boolean isVisibility() {
 		return visibility;
 	}
 
 	public void setVisibility(boolean visibility) {
 		this.visibility = visibility;
+	}
+
+	public Room getRoomSelected() {
+		return roomSelected;
+	}
+
+	public void setRoomSelected(Room roomSelected) {
+		this.roomSelected = roomSelected;
 	}
 
 }

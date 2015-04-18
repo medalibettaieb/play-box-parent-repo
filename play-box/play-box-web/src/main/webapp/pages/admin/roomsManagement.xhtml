@@ -25,8 +25,8 @@
 			</h:dataTable>
 			<h:commandButton action="#{administrationBean.show}" value="addRoom" />
 		</h:form>
-		<h:form id="form2">
-			<h:panelGrid columns="2" rendered="#{administrationBean.visibility}">
+		<h:form id="form2" rendered="#{administrationBean.visibility}">
+			<h:panelGrid columns="2" >
 				<h:outputText value="name" />
 				<h:inputText value="#{administrationBean.room.name}" />
 				<h:outputText value="type" />

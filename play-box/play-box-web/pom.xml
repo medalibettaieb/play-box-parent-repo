@@ -23,7 +23,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>tn.edu.esprit.inco3</groupId>
 			<artifactId>play-box-ejb</artifactId>

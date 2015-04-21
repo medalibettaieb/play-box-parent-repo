@@ -141,4 +141,14 @@ public class AssignmentManagement implements AssignmentManagementRemote,
 
 	}
 
+	@Override
+	public List<Room> findRoomsByGameId(Integer id) {
+		Game game = entityManager.find(Game.class, id);
+		return entityManager
+				.createQuery(
+						"select r from Room r where :param1 member of r.games",
+						Room.class).setParameter("param1", game)
+				.getResultList();
+	}
+
 }

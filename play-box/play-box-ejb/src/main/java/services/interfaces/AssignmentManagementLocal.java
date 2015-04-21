@@ -29,4 +29,6 @@ public interface AssignmentManagementLocal {
 	List<Game> findAllGames();
 
 	Game findGameByName(String name);
+
+	List<Room> findRoomsByGameId(Integer id);
 }
